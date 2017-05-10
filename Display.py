@@ -3,7 +3,7 @@ from Tkinter import *
 
 class Client_Display:
 
-    def __init__(self, root):
+    def __init__(self, root): #tcpCliSock):
         self.root = root
         self.root.title("Kahoot Client")
         self.request_username = Label(self.root, text="Enter a username: ", font="Arial 14")
@@ -28,19 +28,18 @@ class Client_Display:
         self.request_username.grid_forget()
         self.username.grid_forget()
         self.send_user.grid_forget()
-        self.Answers_Screen(self.root)
-
+        print "in get username"
 
 class Server_Display:
 
     def __init__(self, root):
         self.root = root
         self.root.title("Kahoot Server")
-        self.root.geometry("975x533")
         self.current_users = Label(self.root, text="Current Users: ", font="Arial 14")
         self.current_users.grid(row=1, column=1, sticky="W")
 
     def show_question(self, q):
+        self.root.geometry("975x533")
         #questions = ["questions1.txt", "questions2.txt", "questions3.txt"]
         #questionire = random.choice(questions)
         #q = open("questions1.txt", "r")
@@ -61,3 +60,4 @@ class Server_Display:
         self.Option4 = Label(self.root, text = ans4, height=7, width=30, font="Arial 20", bg="green")
         self.Option4.grid(row=3, column=2, sticky="E")
         currect = q.readline()
+        return currect
