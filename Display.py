@@ -1,4 +1,5 @@
 from Tkinter import *
+import Connections
 #import random
 
 class Client_Display:
@@ -6,12 +7,14 @@ class Client_Display:
     def __init__(self, root): #tcpCliSock):
         self.root = root
         self.root.title("Kahoot Client")
-        self.request_username = Label(self.root, text="Enter a username: ", font="Arial 14")
-        self.request_username.grid(row=1, column=1, sticky="WS")
-        self.username = Entry(self.root, font="Arial 14")
-        self.username.grid(row=2,column=1, sticky="W")
-        self.send_user = Button(self.root, text="Join the game!", font="Arial 14", command=self.Get_Username)
-        self.send_user.grid(row=3,column=2, sticky="E")
+        self.wait = Label(self.root, text="Game Will Start Soon...", font="Arial 20")
+        self.wait.grid(row=1, column=1)
+        #self.request_username = Label(self.root, text="Enter a username: ", font="Arial 14")
+        #self.request_username.grid(row=1, column=1, sticky="WS")
+        #self.username = Entry(self.root, font="Arial 14")
+        #self.username.grid(row=2,column=1, sticky="W")
+        #self.send_user = Button(self.root, text="Join the game!", font="Arial 14", command=Connections.Client_Sock.send_username(self.username.get()))
+        #self.send_user.grid(row=3,column=2, sticky="E")
 
     def Answers_Screen(self):
         self.root.geometry("900x472")
@@ -23,12 +26,6 @@ class Client_Display:
         self.Answer3.grid(row=2, column=1, sticky="W")
         self.Answer4=Button(self.root, text="4", height=10, width=40,  font="Arial 14", bg="green")
         self.Answer4.grid(row=2, column=2, sticky="E")
-
-    def Get_Username(self):
-        self.request_username.grid_forget()
-        self.username.grid_forget()
-        self.send_user.grid_forget()
-        print "in get username"
 
 class Server_Display:
 

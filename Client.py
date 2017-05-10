@@ -6,5 +6,5 @@ import API
 
 root = Tk()
 c_socket = Client_Sock()
-app = Display.Client_Display(root,)
+app = Display.Client_Display(root)
 root.mainloop()

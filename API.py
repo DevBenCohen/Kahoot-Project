@@ -1,7 +1,7 @@
 import httplib
 import json
 
-def update(name='Ben', ip=None, port=None, host='planq.ddns.net', host_port=17011):
+def update(name='local', ip=None, port=None, host='planq.ddns.net', host_port=17011):
     '''
     Update your kahoot server information on the directory server.
 
@@ -37,7 +37,7 @@ def update(name='Ben', ip=None, port=None, host='planq.ddns.net', host_port=1701
     response = json.loads(server.getresponse().read())
     return response
 
-def get_details(name='Ben', host='planq.ddns.net', host_port=17011):
+def get_details(name='local', host='planq.ddns.net', host_port=17011):
     '''
     Returns a dictionary with the ip and the port of the requested
     server's name.

@@ -26,7 +26,7 @@ class Server_Socket:
     def __init__ (self):
         self.ip = 'localhost'
         self.port = get_free_port()
-        API.update(self.ip, self.port)
+        API.update("Ben", self.ip, self.port)
         self.ADDR = (self.ip, self.port)
         self.serversock = socket(AF_INET, SOCK_STREAM)
         self.serversock.bind(self.ADDR)
@@ -38,6 +38,14 @@ class Server_Socket:
         return (self.clientsock, self.serversock, self.addr, self.c_username)
 
 class Client_Sock:
+    BUFSIZ = 1024
     def __init__(self):
-        self.info = API.get_details()
-        print self.info
+        self.info = API.get_details("Ben")
+        self.HOST = self.info["result"]["ipaddr"]
+        self.PORT = self.info["result"]["port"]
+        self.ADDR = (self.HOST, self.PORT)
+        self.tcpCliSock = socket(AF_INET, SOCK_STREAM)
+        self.tcpCliSock.connect(self.ADDR)
+        self.username = raw_input("Enter a username: ")
+        self.tcpCliSock.send(self.username)
+        print "connected"
