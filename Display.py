@@ -18,13 +18,13 @@ class Client_Display:
 
     def Answers_Screen(self):
         self.root.geometry("900x472")
-        self.Answer1=Button(self.root, text="1", height=10, width=40, font="Arial 14", bg="red")
+        self.Answer1=Button(self.root, text="1", height=10, width=40, font="Arial 14", bg="red", commands = answer_1)
         self.Answer1.grid(row=1, column=1, sticky="W")
-        self.Answer2=Button(self.root, text="2", height=10, width=40, font="Arial 14", bg="blue")
+        self.Answer2=Button(self.root, text="2", height=10, width=40, font="Arial 14", bg="blue", commands = answer_2)
         self.Answer2.grid(row=1, column=2, sticky="E")
-        self.Answer3=Button(self.root, text="3", height=10, width=40,  font="Arial 14", bg="orange")
+        self.Answer3=Button(self.root, text="3", height=10, width=40,  font="Arial 14", bg="orange", command=answer_3)
         self.Answer3.grid(row=2, column=1, sticky="W")
-        self.Answer4=Button(self.root, text="4", height=10, width=40,  font="Arial 14", bg="green")
+        self.Answer4=Button(self.root, text="4", height=10, width=40,  font="Arial 14", bg="green", command=answer_4)
         self.Answer4.grid(row=2, column=2, sticky="E")
 
 class Server_Display:

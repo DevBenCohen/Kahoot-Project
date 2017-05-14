@@ -12,17 +12,14 @@ def get_free_port():
     s.close()
     return port
 
-def handler(clientsock, serversock, addr, app, q):
-    score = 0
-    currect = app.show_question(q)
-    answer = clientsock.recv(1024)
-    if data == currect:
-        score = score + 10
-        print score
+def handler(clientsock, serversock, addr, app):
+    q = open("questions1.txt", "r")
+    app.show_question(q)
 
 
 class Server_Socket:
     BUFSIZ = 1024
+    Client_List = []
     def __init__ (self):
         self.ip = 'localhost'
         self.port = get_free_port()
@@ -35,7 +32,9 @@ class Server_Socket:
     def wait_for_connection(self):
         self.clientsock, self.addr = self.serversock.accept()
         self.c_username = self.clientsock.recv(Server_Socket.BUFSIZ)
-        return (self.clientsock, self.serversock, self.addr, self.c_username)
+        Server_Socket.Client_List.append([self.clientsock, self.c_username, 0])
+        return self.clientsock
+
 
 class Client_Sock:
     BUFSIZ = 1024
